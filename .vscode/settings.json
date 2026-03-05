@@ -1,3 +1,3 @@
 {
-  "conventionalCommits.scopes": ["work"]
+  "conventionalCommits.scopes": ["work", "data "]
 }
