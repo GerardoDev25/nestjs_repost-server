@@ -9,6 +9,16 @@ export class BasicReportsController {
   hello(@Res() response: Response) {
     const pdfDoc = this.basicReportsService.hello();
     response.setHeader('Content-Type', 'application/pdf');
+    pdfDoc.info.Title = 'Hello World';
+    pdfDoc.pipe(response);
+    pdfDoc.end();
+  }
+
+  @Get('employment-letter')
+  employmentLetter(@Res() response: Response) {
+    const pdfDoc = this.basicReportsService.employmentLetter();
+    response.setHeader('Content-Type', 'application/pdf');
+    pdfDoc.info.Title = 'Employment Letter';
     pdfDoc.pipe(response);
     pdfDoc.end();
   }

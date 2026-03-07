@@ -1,4 +1,4 @@
 {
   "conventionalCommits.scopes": ["work", "data ", "docs"],
-  "cSpell.words": ["bolditalics", "pdfmake"]
+  "cSpell.words": ["bolditalics", "DDMMMMYYYY", "pdfmake"]
 }
