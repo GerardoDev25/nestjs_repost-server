@@ -1,7 +1,11 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { PrinterService } from 'src/printer/printer.service';
-import { getEmploymentLetterReport, getHelloWorldReport } from 'src/reports';
+import {
+  getEmploymentLetterReport,
+  getHelloWorldReport,
+  getEmploymentLetterByIdReport,
+} from 'src/reports';
 
 @Injectable()
 export class BasicReportsService {
@@ -19,6 +23,33 @@ export class BasicReportsService {
   employmentLetter() {
     const documentDefinition = getEmploymentLetterReport();
     const doc = this.printerService.createPdf(documentDefinition);
+    return doc;
+  }
+
+  async employmentLetterById(id: number) {
+    const employee = await this.prisma.employees.findUnique({
+      where: {
+        id: id,
+      },
+    });
+
+    if (!employee) {
+      throw new NotFoundException(`Employee with id ${id} not found`);
+    }
+
+    const docDefinition = getEmploymentLetterByIdReport({
+      employerName: 'Gerardo Miranda',
+      employerPosition: 'Gerente de RRHH',
+      employeeName: employee.name,
+      employeePosition: employee.position,
+      employeeStartDate: employee.start_date,
+      employeeHours: employee.hours_per_day,
+      employeeWorkSchedule: employee.work_schedule,
+      employerCompany: 'Tucan Code Corp.',
+    });
+
+    const doc = this.printerService.createPdf(docDefinition);
+
     return doc;
   }
 }
