@@ -6,6 +6,7 @@ import {
   getHelloWorldReport,
   getEmploymentLetterByIdReport,
 } from 'src/reports';
+import { getCountryReport } from 'src/reports/countries.report';
 
 @Injectable()
 export class BasicReportsService {
@@ -51,5 +52,17 @@ export class BasicReportsService {
     const doc = this.printerService.createPdf(docDefinition);
 
     return doc;
+  }
+
+  async getCountries() {
+    const countries = await this.prisma.countries.findMany({
+      where: { local_name: { not: null } },
+    });
+    const documentDefinition = getCountryReport({
+      title: 'Countries',
+      subTitle: 'List of countries',
+      countries: countries,
+    });
+    return this.printerService.createPdf(documentDefinition);
   }
 }

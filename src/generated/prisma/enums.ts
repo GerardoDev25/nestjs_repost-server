@@ -9,7 +9,14 @@
 * 🟢 You can import this file directly.
 */
 
+export const continents = {
+  Africa: 'Africa',
+  Antarctica: 'Antarctica',
+  Asia: 'Asia',
+  Europe: 'Europe',
+  Oceania: 'Oceania',
+  North_America: 'North_America',
+  South_America: 'South_America'
+} as const
 
-
-// This file is empty because there are no enums in the schema.
-export {}
+export type continents = (typeof continents)[keyof typeof continents]

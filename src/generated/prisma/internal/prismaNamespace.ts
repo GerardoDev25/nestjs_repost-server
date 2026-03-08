@@ -384,7 +384,8 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 
 export const ModelName = {
-  employees: 'employees'
+  employees: 'employees',
+  countries: 'countries'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -400,7 +401,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "employees"
+    modelProps: "employees" | "countries"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -478,6 +479,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    countries: {
+      payload: Prisma.$countriesPayload<ExtArgs>
+      fields: Prisma.countriesFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.countriesFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$countriesPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.countriesFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$countriesPayload>
+        }
+        findFirst: {
+          args: Prisma.countriesFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$countriesPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.countriesFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$countriesPayload>
+        }
+        findMany: {
+          args: Prisma.countriesFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$countriesPayload>[]
+        }
+        create: {
+          args: Prisma.countriesCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$countriesPayload>
+        }
+        createMany: {
+          args: Prisma.countriesCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.countriesCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$countriesPayload>[]
+        }
+        delete: {
+          args: Prisma.countriesDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$countriesPayload>
+        }
+        update: {
+          args: Prisma.countriesUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$countriesPayload>
+        }
+        deleteMany: {
+          args: Prisma.countriesDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.countriesUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.countriesUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$countriesPayload>[]
+        }
+        upsert: {
+          args: Prisma.countriesUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$countriesPayload>
+        }
+        aggregate: {
+          args: Prisma.CountriesAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCountries>
+        }
+        groupBy: {
+          args: Prisma.countriesGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CountriesGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.countriesCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CountriesCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -530,6 +605,18 @@ export const EmployeesScalarFieldEnum = {
 export type EmployeesScalarFieldEnum = (typeof EmployeesScalarFieldEnum)[keyof typeof EmployeesScalarFieldEnum]
 
 
+export const CountriesScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  iso2: 'iso2',
+  iso3: 'iso3',
+  local_name: 'local_name',
+  continent: 'continent'
+} as const
+
+export type CountriesScalarFieldEnum = (typeof CountriesScalarFieldEnum)[keyof typeof CountriesScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -544,6 +631,14 @@ export const QueryMode = {
 } as const
 
 export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+export const NullsOrder = {
+  first: 'first',
+  last: 'last'
+} as const
+
+export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
 
@@ -591,6 +686,34 @@ export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel
  * Reference to a field of type 'DateTime[]'
  */
 export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+    
+
+
+/**
+ * Reference to a field of type 'BigInt'
+ */
+export type BigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt'>
+    
+
+
+/**
+ * Reference to a field of type 'BigInt[]'
+ */
+export type ListBigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt[]'>
+    
+
+
+/**
+ * Reference to a field of type 'continents'
+ */
+export type EnumcontinentsFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'continents'>
+    
+
+
+/**
+ * Reference to a field of type 'continents[]'
+ */
+export type ListEnumcontinentsFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'continents[]'>
     
 
 
@@ -703,6 +826,7 @@ export type PrismaClientOptions = ({
 }
 export type GlobalOmitConfig = {
   employees?: Prisma.employeesOmit
+  countries?: Prisma.countriesOmit
 }
 
 /* Types for Logging */
