@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Content, ContextPageSize } from 'pdfmake/interfaces';
 
 export const footerSection = (
@@ -5,7 +6,6 @@ export const footerSection = (
   pageCount: number,
   pageSize: ContextPageSize,
 ): Content => {
-  // console.log(pageSize);
   return {
     text: `Página ${currentPage} de ${pageCount}`,
     alignment: 'right',
