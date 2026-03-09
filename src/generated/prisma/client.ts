@@ -49,3 +49,28 @@ export type employees = Prisma.employeesModel
  * This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
  */
 export type countries = Prisma.countriesModel
+/**
+ * Model categories
+ * 
+ */
+export type categories = Prisma.categoriesModel
+/**
+ * Model customers
+ * 
+ */
+export type customers = Prisma.customersModel
+/**
+ * Model order_details
+ * 
+ */
+export type order_details = Prisma.order_detailsModel
+/**
+ * Model orders
+ * 
+ */
+export type orders = Prisma.ordersModel
+/**
+ * Model products
+ * 
+ */
+export type products = Prisma.productsModel
