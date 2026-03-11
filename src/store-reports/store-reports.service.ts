@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrinterService } from 'src/printer/printer.service';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { orderByIdReport } from 'src/reports';
+import { getBasicChatSvgReport, orderByIdReport } from 'src/reports';
 
 @Injectable()
 export class StoreReportsService {
@@ -81,6 +81,12 @@ export class StoreReportsService {
     };
 
     const documentDefinition = orderByIdReport(reportData);
+    const doc = this.printerService.createPdf(documentDefinition);
+    return doc;
+  }
+
+  async getSvgChart() {
+    const documentDefinition = await getBasicChatSvgReport();
     const doc = this.printerService.createPdf(documentDefinition);
     return doc;
   }
