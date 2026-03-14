@@ -39,4 +39,29 @@ export class ExtraReportService {
 
     return doc;
   }
+
+  getCustomSize() {
+    const doc = this.printerService.createPdf({
+      // pageSize: 'TABLOID',
+      pageSize: {
+        width: 210,
+        height: 297,
+      },
+      content: [
+        {
+          qr: 'https://devtalles.com',
+          fit: 100,
+          alignment: 'center',
+        },
+        {
+          text: 'Reporte con tamaño personalizado',
+          fontSize: 10,
+          alignment: 'center',
+          margin: [0, 20],
+        },
+      ],
+    });
+
+    return doc;
+  }
 }
