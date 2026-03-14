@@ -7,3 +7,4 @@ export * from './order-by-id.report';
 export * from './statistics.report';
 export * from './section/footer.section';
 export * from './section/header.section';
+export * from './community.report';
